@@ -4,6 +4,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import OrdinalEncoder
 
 df=pd.read_csv(r"C:\Users\Sourabh Sharma\OneDrive\Desktop\insurance_data\insurance - insurance.csv")
 print(df.head(3))
@@ -33,6 +34,13 @@ print(x_train_transformed.shape)
 
 
 
+transformer = ColumnTransformer(transformers=[
+('tnf2',OrdinalEncoder(categories=[['female', 'male']]), ['sex']),
+('tnf3',OneHotEncoder(sparse_output=False, drop='first'), ['smoker','region'])
+],remainder='passthrough')
+
+print(transformer.fit_transform(x_train).shape)
+print(transformer.transform(x_test).shape)
 
 
 
