@@ -42,6 +42,8 @@ transformer = ColumnTransformer(transformers=[
 print(transformer.fit_transform(x_train).shape)
 print(transformer.transform(x_test).shape)
 
+#sourabh
+
 
 
 
